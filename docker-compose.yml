@@ -1,0 +1,43 @@
+name: luciusbrutus_laravel-12
+services:
+  nxginx:
+    # build: ./nginx
+    image: nginx:latest
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www/
+      - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - app
+    container_name: laravel_nginx
+
+  app:
+    image: luciusbrutus/laravel-app:latest
+    volumes:
+      - ./:/var/www/
+    depends_on:
+      - db
+    container_name: laravel_app
+
+  db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: laravel_app
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_AUTENTICATION_PLUGIN: mysql_native_password
+    container_name: laravel_db
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8001:80
+    environment:
+      PMA_HOST: db
+    container_name: laravel_phpmyadmin
