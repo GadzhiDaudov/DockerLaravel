@@ -6,15 +6,15 @@
 ### For empty projects:
 - docker-compose exec -it app bash
 - mkdir /tmp/temp_docker
-//
+
 - mv /var/www/* /tmp/temp_docker/
 - mv /var/www/.* /tmp/temp_docker/
-//
+
 - composer create-project laravel/laravel .
-//
+
 - mv /tmp/temp_docker/* /var/www/
 - mv /tmp/temp_docker/.* /var/www/
-//
+
 - rmdir /tmp/temp_docker
-//
+
 - exit
