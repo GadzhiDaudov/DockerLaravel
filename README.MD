@@ -18,3 +18,11 @@
 - rmdir /tmp/temp_docker
 
 - exit
+
+### ENV config
+- DB_CONNECTION=mysql
+- DB_HOST=db
+- DB_PORT=3306
+- DB_DATABASE=laravel_app
+- DB_USERNAME=root
+- DB_PASSWORD=root
