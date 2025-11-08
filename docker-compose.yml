@@ -28,7 +28,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./tmp/db:/var/lib/mysql
+      - /var/lib/mysql:/var/lib/mysql
     environment:
       MYSQL_DATABASE: laravel_app
       MYSQL_ROOT_PASSWORD: root
